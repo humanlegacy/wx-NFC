@@ -1,0 +1,47 @@
+<view class="page-body">
+
+  <view class="weui-msg__text-area" style="text-align:center">
+    <view class="weui-msg__title">Ndef设备数据读写</view>
+    <view class="weui-msg__desc">请将设备放入NFC识别区</view>
+  </view>
+
+  <view style="padding:10px;">
+    <view style="font-size:30rpx;color:#aaa;padding-left:35rpx" wx:if="{{id}}">id:{{id}}</view>
+    <view class="page-section">
+      <view class="weui-cells__title">标签type</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input" auto-focus placeholder="请输入" value="{{type}}" bindinput="bindTypeInput"/>
+        </view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="weui-cells__title">标签payload</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input" placeholder="请输入" value="{{payload}}" bindinput="bindPayloadInput" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view style="padding:20rpx">
+    <button type="default" wx:if="{{isOpened}}" bindtap="writeNFC">写入数据</button>
+    <button type="primary" wx:if="{{showRefresh}}" bindtap="startDiscovery">刷新重试</button>
+  </view>
+
+
+  <view class="logs">
+    <view wx:for="{{logs}}" wx:key="index" class="logs-item">
+      <view class="text" wx:if="{{item.error}}">{{item.error.errMsg}}</view>
+      <view class="text" wx:if="{{item.res}}">{{item.res.errMsg}}</view>
+      <view class="text" wx:if="{{item.text}}">{{item.text}}</view>
+      <view class="time" wx:if="{{item.time}}">{{item.time}}</view>
+    </view>
+  </view>
+  <view style="padding:20rpx">
+    <button type="default" bindtap="clear">清除日志</button>
+  </view>
+
+</view>

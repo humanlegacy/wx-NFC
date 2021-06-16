@@ -1,0 +1,19 @@
+@import "../../lib/weui.wxss";
+
+.logs{
+  height: 500rpx;
+  padding: 20rpx 35rpx;
+  overflow: auto;
+  background: #555;
+}
+.logs-item{
+  margin-bottom: 15rpx;
+}
+.time,.text{
+  font-size: 23rpx;
+  color: #a0a0a0a0;
+}
+.text{
+  font-size: 25rpx;
+  color: #ccc;
+}
